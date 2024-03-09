@@ -12,17 +12,14 @@ export const Questionnaire = (props) => {
                 {questions.map((_, index) => {
                     switch(props.questionTypes[index]){
                         case("MC"):
-                            return(<MCQuestion parameters={props.questionParameters[index]}/>);
-                            break;
+                            return(<MCQuestion questionUpdateFunction={props.questionUpdateFunction} questionNumber={index} parameters={props.questionParameters[index]}/>);
                         case("SL"):
-                            return(<SliderQuestion parameters={props.questionParameters[index]}/>);
-                            break;
+                            return(<SliderQuestion questionUpdateFunction={props.questionUpdateFunction} questionNumber={index} parameters={props.questionParameters[index]}/>);
                         default:
-                            return(<div>ERROR: What did you put as the question type for questionTypes{index+1}??</div>)
-                            break;
+                            return(<div>ERROR: What did you put as the question type for questionTypes{index+1}??</div>);
                     }
                 })}
-                <Button variant="contained">{props.buttonText}</Button>
+                <Button onClick={props.buttonFunction} variant="contained">{props.buttonText}</Button>
             </Stack>
         </>
     )

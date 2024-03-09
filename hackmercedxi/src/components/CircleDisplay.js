@@ -1,12 +1,12 @@
 import CircularProgress from '@mui/material/CircularProgress';
-import ResultText from "./ResultText"
 import Outcomes from './Outcomes';
 
-export const CircleDisplay = () => {
+export const CircleDisplay = (props) => {
+
     var resultText = Outcomes.GOOD;
     return (
         <>
-            <CircularProgress variant="determinate" value={80}/>
+            <CircularProgress className="output" variant="determinate" value={props.result}/>
             <div>{resultText}</div>
         </>
     )
