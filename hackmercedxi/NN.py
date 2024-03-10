@@ -9,7 +9,7 @@ CORS(app)
 def query():
     data = json.loads(request.data)
     print(data)
-    return "69"
+    return "0.4"
 
 if __name__ == "__main__":
     app.run()

@@ -4,7 +4,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Slider from '@mui/material/Slider';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {amber} from '@mui/material/colors';
 import {useState} from "react";
+import '../App.css'
 
 export const MCQuestion = (props) => {
 
@@ -13,7 +17,7 @@ export const MCQuestion = (props) => {
     const handleChange = (event) => {
         props.questionUpdateFunction(props.questionNumber, event.target.value);
     }
-
+    
     return (
         <>
             <FormControl>
@@ -22,7 +26,8 @@ export const MCQuestion = (props) => {
                     onChange={handleChange}
                 >
                     {options.map((_, index) => {
-                        return(<FormControlLabel value={index} control={<Radio />} label={props.parameters.values[index]} />)
+                        return(<FormControlLabel value={index} control={<Radio sx={{ color: amber[800], '&.Mui-checked': {color: amber[600],}}}
+                         />} label={<Typography style={{ fontFamily: 'Consolas' }}>{props.parameters.values[index]}</Typography>} />)
                     })}
                 </RadioGroup>
             </FormControl>
@@ -40,7 +45,7 @@ export const SliderQuestion = (props) => {
     return (
         <>
             <label htmlFor={String(props.questionNumber)}>{props.parameters.name}</label>
-            <Slider id={String(props.questionNumber)} onChange={handleChange} valueLabelDisplay="auto" value={value} min={props.parameters.min} max={props.parameters.max} />
+                <Slider sx={{ color: amber[500] }} marks={[{value: props.parameters.min+(props.parameters.max*0.01), label: props.parameters.min}, {value: props.parameters.max*0.99, label: props.parameters.max}]} id={String(props.questionNumber)} onChange={handleChange} valueLabelDisplay="auto" value={value} min={props.parameters.min} max={props.parameters.max} />
         </>
     )
-}
+}   
