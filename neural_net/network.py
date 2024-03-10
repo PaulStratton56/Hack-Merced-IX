@@ -6,18 +6,46 @@ import torch.nn.functional as F
 class network(nn.Module):
     def __init__(self):
         super(network, self).__init__()
-        self.something = nn.Sequential(
-            nn.Linear(21, 32),  # Input layer to first hidden layer
-            nn.PReLU(),         # PReLU activation function
-            nn.Linear(32, 16),  # First hidden layer to second hidden layer
-            nn.ReLU(),          # ReLU activation function
-            nn.Linear(16, 8),   # Second hidden layer to third hidden layer
-            nn.Tanh(),          # Tanh activation function
-            nn.Linear(8, 4),    # Third hidden layer to fourth hidden layer
-            nn.ReLU(),          # ReLU activation function
-            nn.Linear(4, 1),     # Fourth hidden layer to fifth hidden layer
+        self.layer1 = nn.Sequential(
+            nn.Linear(22, 32),  
+            nn.PReLU(),         
+        )
+        self.layer2 = nn.Sequential(
+            nn.Linear(32, 64),
+            nn.ReLU(),          
+        )
+        self.layer3 = nn.Sequential(
+            nn.Linear(64, 64), 
+            nn.Tanh(),          
+        )
+        self.layer4 = nn.Sequential(
+            nn.Linear(64, 64),
+            nn.PReLU()
+        )
+        self.layer5 = nn.Sequential(
+            nn.Linear(64, 64),  
+            nn.ReLU(),          
+        )
+        self.layer6 = nn.Sequential(
+            nn.Linear(64, 32),   
+            nn.PReLU(),          
+        )
+        self.layer7 = nn.Sequential(
+            nn.Linear(32, 16),  
+            nn.Sigmoid()
+        )
+        self.layer8 = nn.Sequential(
+            nn.Linear(16, 1),  
             nn.Sigmoid()
         )
 
     def forward(self, x):
-        return self.something(x)
+        l1 = self.layer1(x)
+        l2 = self.layer2(l1)
+        l3 = self.layer3(l2)
+        l4 = self.layer4(l3)+l2
+        l5 = self.layer5(l4)+l3
+        l6 = self.layer6(l5)+l1
+        l7 = self.layer7(l6)
+        l8 = self.layer8(l7)
+        return l8
