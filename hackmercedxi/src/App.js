@@ -46,8 +46,8 @@ function App() {
     request.send(NNPackage);
 
     request.onload = function(){
-      console.log("Response found!!!.");
-      updateResult(Number(this.responseText));
+      var NNOutput = JSON.parse(this.responseText);
+      updateResult(NNOutput["value"]);
     };
   }
 
@@ -74,8 +74,6 @@ function App() {
       alert("You haven't filled out a question yet! Please select an answer for all questions. (Note: You must interact with all sliders to proceed.)");
     }
     else{
-      console.log("Submitted! Calculating...");   
-      console.log(questionValues);
       window.scrollTo({
         top: 0,
         behavior: 'smooth' // Smooth scrolling animation

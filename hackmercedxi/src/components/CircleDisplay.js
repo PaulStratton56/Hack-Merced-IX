@@ -12,11 +12,6 @@ const theme = createTheme({
   });
   
 export const CircleDisplay = (props) => {
-
-    console.log(props.result);
-    console.log(props.result * 100);
-    console.log(100 - (props.result*100));
-    
     var score = Math.floor(100-(props.result*100));
     var resultText;
     switch(true){
@@ -44,9 +39,9 @@ export const CircleDisplay = (props) => {
                 />
             </ThemeProvider>
             <div className="outputText">
-                Your score is: {score} <br></br>
+                Your score is: {score}/100 <br></br>
                 <div className="scoreDescription">
-
+                    (The higher the score, the better odds you have at not having diabetes!) <br></br>
                     {resultText}
                 </div>
             </div>
