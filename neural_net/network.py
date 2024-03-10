@@ -7,7 +7,7 @@ class network(nn.Module):
     def __init__(self):
         super(network, self).__init__()
         self.layer1 = nn.Sequential(
-            nn.Linear(22, 32),  
+            nn.Linear(20, 32),  
             nn.PReLU(),         
         )
         self.layer2 = nn.Sequential(
