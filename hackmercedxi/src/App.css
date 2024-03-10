@@ -1,0 +1,134 @@
+*{
+  font-family: consolas;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(#5a5510, #322a05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.title-bar {
+  background: linear-gradient(to right, white, #ffffad);
+  color: black;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.title-bar h1 {
+  margin-left: 20px;
+  padding-left: 2px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 120px;
+  margin-bottom: 80px;
+  background-color: transparent; /* Set a transparent background for the App */
+  color: #000000;
+  max-width: 600px;
+  width: 90%;
+  z-index: 0;
+}
+
+#appContainer{
+  display: flex;
+  justify-content: left;
+  width:90vw;
+}
+
+#input{
+  width:40%;
+}
+
+/* #output > *{
+  border: 2px solid black;
+} */
+
+@keyframes sway {
+  0% {
+    transform: rotateZ(0deg) scale(1); 
+  }
+  25% {
+    transform: rotateZ(5deg) scale(1.1);  
+  }
+  50% {
+    transform: rotateZ(0deg) scale(1); 
+  }
+  75% {
+    transform: rotateZ(-5deg) scale(1.1); 
+  }
+  100% {
+    transform: rotateZ(0deg) scale(1); 
+  }
+}
+
+.swaying-text {
+  animation: sway 3s linear infinite forwards;
+}
+
+#output{
+  margin-left:5%;
+  display:none;
+  flex-direction: column;
+  align-items: flex-start;
+  width:40%;
+}
+
+.outputText{
+  margin-top:2rem;
+  background: linear-gradient(to right, white, #ffffad);
+  padding:30px;
+  border-radius: 3rem;
+  font-size:3rem;
+  width:100%;
+}
+
+.scoreDescription{
+  font-size:2rem;
+}
+
+#aboutText{
+  margin-top:2rem;
+  background: linear-gradient(to right, white, #ffffad);
+  padding:30px;
+  border-radius: 3rem;
+  font-size:2rem;
+  width:100%;
+}
+
+.question-box {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: linear-gradient(135deg, white, #ffffad);
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-input {
+  width: 100%; /* Make the slider take up the full width of the container */
+}
+
+.hidden{
+  display:none;
+}
